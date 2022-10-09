@@ -1,0 +1,98 @@
+//Logger.java
+
+package week5;
+
+public interface Logger {
+
+  public void Log(String log);
+  public void Error(String error);
+  
+
+  
+  
+}
+
+
+//AsteriskLogger.java
+
+package week5;
+
+public class AsteriskLogger implements Logger {
+
+  public AsteriskLogger(String string) {
+    
+   
+  }
+
+  @Override
+  public void Log(String log) {
+    System.out.println("***" + log + "***");
+    
+  }
+
+  @Override
+  public void Error(String error) {
+    
+    System.out.println("***ERROR: " + error + "***");
+    
+  }
+
+  
+  
+}
+
+
+
+//SpacedLogger.java
+
+package week5;
+
+public class SpacedLogger implements Logger{
+
+  public SpacedLogger(String string) {
+    // TODO Auto-generated constructor stub
+  }
+
+  @Override
+  public void Log(String log) {
+    System.out.println(log.replaceAll(".(?!$)", "$0 "));
+    
+  }
+
+  @Override
+  public void Error(String error) {
+
+    System.out.println("***ERROR: " + error.replaceAll(".(?!$)", "$0 ") + "***");
+    
+  }
+
+}
+
+
+
+//App.java
+
+package week5;
+
+public class App {
+
+  public static void main(String[] args) {
+ 
+     Logger AsteriskLogger = new AsteriskLogger("");
+     AsteriskLogger.Log("Example");
+
+     Logger spacedLogger = new SpacedLogger("");
+     spacedLogger.Log("Another example");
+     
+     
+     Logger asteriskLoggerError = new AsteriskLogger("");
+     asteriskLoggerError.Error("Another new example");
+     
+     Logger spacedLoggerError = new SpacedLogger("");
+     spacedLoggerError.Error("Final example");
+     
+  }
+
+
+}
+
